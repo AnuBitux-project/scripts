@@ -1,5 +1,5 @@
 #!/bin/sh
 for interface in $(ls /sys/class/net/ | grep -v lo); do
-    macchanger -r "$interface"
+    sudo macchanger -r "$interface"
 done
-exit 0
+$SHELL
