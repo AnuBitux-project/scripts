@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cat <<EOF > /etc/udev/rules.d/20-hw1.rules
+figlet UDEV-rules
+sudo -s
+sudo cat <<EOF > /etc/udev/rules.d/20-hw1.rules
 # HW.1 / Nano
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="1b7c|2b7c|3b7c|4b7c", TAG+="uaccess", TAG+="udev-acl"
 # Blue
@@ -17,15 +19,15 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0004|4000|4001|40
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0005|5000|5001|5002|5003|5004|5005|5006|5007|5008|5009|500a|500b|500c|500d|500e|500f|5010|5011|5012|5013|5014|5015|5016|5017|5018|5019|501a|501b|501c|501d|501e|501f", TAG+="uaccess", TAG+="udev-acl"
 EOF
 
-udevadm trigger
-udevadm control --reload-rules
+sudo udevadm trigger
+sudo udevadm control --reload-rules
 
 sudo groupadd plugdev
 sudo usermod -aG plugdev $(whoami)
-sudo cp /home/anubitux/Tools/Wallets/HW/udev/*.rules /etc/udev/rules.d/
+sudo cp /opt/Tools/Wallets/HW/udev/*.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
-sudo dpkg -i /home/anubitux/Tools/Wallets/HW/trezor-udev_2_all.deb
+sudo dpkg -i /opt/Tools/Wallets/HW/trezor-udev_2_all.deb
 
 echo 'All done'
-sleep 3
+$SHELL
