@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ' '
+figlet BulkExtractor
+echo ' '
 echo bulk_extractor is a tool for searching among a file system for desired data
 bulk_extractor
 echo ' '
