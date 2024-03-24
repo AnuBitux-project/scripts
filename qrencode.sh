@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ' '
+figlet QRencode
+echo ' '
 qrencode -h
 echo ' '
 echo -e "\033[1;91mexample:\033[0m"
